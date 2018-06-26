@@ -68,10 +68,6 @@ doctrine:
                     ApplicationSonataUserBundle: ~
                     SonataMediaBundle: ~
                     ApplicationSonataMediaBundle: ~
-                    SonataNewsBundle: ~
-                    ApplicationSonataNewsBundle: ~
-                    SonataClassificationBundle: ~
-                    ApplicationSonataClassificationBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
