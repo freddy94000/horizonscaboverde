@@ -17,3 +17,9 @@
 /web/bundles/
 .idea
 composer.phar
+/web/css
+/web/js
+/web/fonts
+/front/bower_components/
+/front/node_modules/
+/front/package-lock.json

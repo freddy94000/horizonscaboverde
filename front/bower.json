@@ -1,0 +1,21 @@
+{
+  "name": "hcv",
+  "homepage": "https://github.com/freddy94000/horizonscaboverde",
+  "authors": [
+    "freddy <freddy@MacBook-Pro-de-freddy.local>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
+}
