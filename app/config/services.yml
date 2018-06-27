@@ -33,3 +33,10 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    app.admin.block:
+        class: AppBundle\Admin\BlockAdmin
+        arguments: [~, AppBundle\Entity\Block, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Block }
+        public: true

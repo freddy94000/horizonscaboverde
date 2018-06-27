@@ -32,6 +32,9 @@ class AppKernel extends Kernel
             new Sonata\MediaBundle\SonataMediaBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+
+            new Vich\UploaderBundle\VichUploaderBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

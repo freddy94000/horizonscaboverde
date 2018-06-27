@@ -39,3 +39,8 @@ monolog:
 
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']
+
+sonata_media:
+    cdn:
+        server:
+            path: /horizonscaboverde/web/uploads/media # http://media.sonata-project.org/

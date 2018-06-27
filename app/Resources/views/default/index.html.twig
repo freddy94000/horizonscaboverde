@@ -1,5 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Test</h1>
+    <div class="block-principal">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>{{ blockPrincipal.content|raw }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for block in blocks %}
+        {% if block.rank != 0 %}
+            <div class="block">
+                <div class="container">
+                    <div class="row">
+                        {% if loop.index is odd %}
+                            <div class="col-xs-6"></div>
+                        {% endif %}
+                        <div class="col-xs-6">
+                            <h2>{{ block.title|raw }}</h2>
+                            <p>{{ block.content|raw }}</p>
+                        </div>
+                        {% if loop.index is not odd %}
+                            <div class="col-xs-6"></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <div class="container medias">
+        <div class="row">
+            {% for media in medias %}
+                {% if loop.index < 6 %}
+                    {% if loop.first %}
+                        <div class="col-xs-6">
+                            {% media media, 'big' %}
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="row">
+                    {% else %}
+                        <div class="col-xs-6">
+                            {% thumbnail media, 'big' %}
+                        </div>
+                    {% endif %}
+                    {% if loop.last %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <
+
 {% endblock %}
