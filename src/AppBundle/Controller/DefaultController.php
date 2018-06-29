@@ -13,8 +13,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="test")
+     */
+    public function testAction(Request $request)
+    {
+        return $this->render('default/test.html.twig', []);
+    }
+    
+    /**
+     * @Route("/test", name="homepage")
      */
     public function indexAction(Request $request)
     {
