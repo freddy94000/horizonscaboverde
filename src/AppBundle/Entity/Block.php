@@ -27,6 +27,13 @@ class Block
     /**
      * @var string
      *
+     * @ORM\Column(name="code", type="string", length=255)
+     */
+    private $code;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
@@ -37,13 +44,6 @@ class Block
      * @ORM\Column(name="content", type="text")
      */
     private $content;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="rank", type="integer")
-     */
-    private $rank;
 
     /**
      * @var string|null
@@ -84,6 +84,25 @@ class Block
     }
 
     /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param $code
+     * @return $this
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+        
+        return $this;
+    }
+
+    /**
      * Set title.
      *
      * @param string $title
@@ -105,30 +124,6 @@ class Block
     public function getTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * Set rank.
-     *
-     * @param int $rank
-     *
-     * @return Block
-     */
-    public function setRank($rank)
-    {
-        $this->rank = $rank;
-
-        return $this;
-    }
-
-    /**
-     * Get rank.
-     *
-     * @return int
-     */
-    public function getRank()
-    {
-        return $this->rank;
     }
 
     /**

@@ -1,60 +1,100 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="block-principal">
+    <div class="principal">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
-                    <p>{{ blockPrincipal.content|raw }}</p>
+                <div class="col-xs-12 col-md-6">
+                    <p class="principal1">{{ principal1.content|raw }}</p>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <p class="principal2">{{ principal2.content|raw }}</p>
+                    <p class="principal3">{{ principal3.content|raw }}</p>
                 </div>
             </div>
         </div>
     </div>
 
-    {% for block in blocks %}
-        {% if block.rank != 0 %}
-            <div class="block">
-                <div class="container">
-                    <div class="row">
-                        {% if loop.index is odd %}
-                            <div class="col-xs-6"></div>
-                        {% endif %}
-                        <div class="col-xs-6">
-                            <h2>{{ block.title|raw }}</h2>
-                            <p>{{ block.content|raw }}</p>
-                        </div>
-                        {% if loop.index is not odd %}
-                            <div class="col-xs-6"></div>
-                        {% endif %}
-                    </div>
+    <div class="environnement gray block">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <h2>{{ environnement.title }}</h2>
+                    <p>{{ environnement.content|raw }}</p>
                 </div>
             </div>
-        {% endif %}
-    {% endfor %}
+        </div>
+    </div>
 
-    <div class="container medias">
-        <div class="row">
-            {% for media in medias %}
-                {% if loop.index < 6 %}
-                    {% if loop.first %}
-                        <div class="col-xs-6">
-                            {% media media, 'big' %}
-                        </div>
-                        <div class="col-xs-6">
-                            <div class="row">
-                    {% else %}
-                        <div class="col-xs-6">
-                            {% thumbnail media, 'big' %}
-                        </div>
-                    {% endif %}
-                    {% if loop.last %}
+    <div class="entreprise white block">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <h2>{{ entreprise.title }}</h2>
+                    <p>{{ entreprise.content|raw }}</p>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sport gray block">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <h2>{{ sport.title }}</h2>
+                    <p>{{ sport.content|raw }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="culture white block">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <h2>{{ culture.title }}</h2>
+                    <p>{{ culture.content|raw }}</p>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="medias">
+        <div class="container">
+            <div class="row">
+                {% for media in medias %}
+                    {% if loop.index < 6 %}
+                        {% if loop.first %}
+                            <div class="col-xs-6">
+                                {% media media, 'big' %}
                             </div>
-                        </div>
+                            <div class="col-xs-6">
+                            <div class="row">
+                        {% else %}
+                            <div class="col-xs-6">
+                                {% thumbnail media, 'big' %}
+                            </div>
+                        {% endif %}
+                        {% if loop.last %}
+                            </div>
+                            </div>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
+
+
+
 
     <form method="post" action="{{ path('homepage') }}">
         {{form_errors(form)}}

@@ -29,10 +29,14 @@ class DefaultController extends Controller
     {
         /** @var BlockRepository $blockRepository */
         $blockRepository = $this->getDoctrine()->getRepository('AppBundle:Block');
-        
-        $blockPrincipal = $blockRepository->findOneByRank(0);
 
-        $blocks = $blockRepository->findBy([], ['rank' => 'ASC']);
+        $principal1 = $blockRepository->findOneBy(['code' => 'principal_1']);
+        $principal2 = $blockRepository->findOneBy(['code' => 'principal_2']);
+        $principal3 = $blockRepository->findOneBy(['code' => 'principal_3']);
+        $entreprise = $blockRepository->findOneBy(['code' => 'entreprise']);
+        $environnment = $blockRepository->findOneBy(['code' => 'environnement']);
+        $sport = $blockRepository->findOneBy(['code' => 'sport']);
+        $culture = $blockRepository->findOneBy(['code' => 'culture']);
         
         /** @var MediaManager $mediaManager */
         $mediaManager = $this->get('sonata.media.manager.media');
@@ -60,8 +64,13 @@ class DefaultController extends Controller
 
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
-            'blocks' => $blocks,
-            'blockPrincipal' => $blockPrincipal,
+            'principal1' => $principal1,
+            'principal2' => $principal2,
+            'principal3' => $principal3,
+            'entreprise' => $entreprise,
+            'environnement' => $environnment,
+            'sport' => $sport,
+            'culture' => $culture,
             'medias' => $medias,
             'form' => $form->createView()
         ]);

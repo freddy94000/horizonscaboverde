@@ -9,6 +9,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
+use Sonata\FormatterBundle\Form\Type\SimpleFormatterType;
 
 class BlockAdmin extends AbstractAdmin
 {
@@ -23,8 +24,8 @@ class BlockAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('code', null, ['label' => 'Code'])
             ->add('title', null, ['label' => 'Titre'])
-            ->add('rank', null, ['label' => 'Rang'])
             ->add('_action', null, [
                 'actions' => [
                     'edit' => [],
@@ -45,9 +46,14 @@ class BlockAdmin extends AbstractAdmin
         }
 
         $formMapper
+            ->add('code', null, ['label' => 'Code'])
             ->add('title', null, ['label' => 'Titre'])
-            ->add('content', CKEditorType::class, ['label' => 'Contenu'])
-            ->add('rank', null, ['label' => 'Rang'])
+            ->add('content', 'textarea', [
+                'label' => 'Contenu',
+                'attr' => [
+                    'rows' => '10'
+                ],
+            ])
             ->add('imageFile', 'Vich\UploaderBundle\Form\Type\VichFileType', $imageOptions)
         ;
     }

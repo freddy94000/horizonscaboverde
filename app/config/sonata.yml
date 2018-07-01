@@ -85,3 +85,22 @@ sonata_media:
         media: Application\Sonata\MediaBundle\Entity\Media
         gallery: Application\Sonata\MediaBundle\Entity\Gallery
         gallery_has_media: Application\Sonata\MediaBundle\Entity\GalleryHasMedia
+
+sonata_admin:
+    templates:
+        layout:  SonataAdminBundle::layout.html.twig
+    assets:
+        extra_javascripts:
+            # ...
+            - bundles/fosckeditor/ckeditor.js
+            - bundles/sonataformatter/vendor/markitup-markitup/markitup/jquery.markitup.js
+            - bundles/sonataformatter/markitup/sets/markdown/set.js
+            - bundles/sonataformatter/markitup/sets/html/set.js
+            - bundles/sonataformatter/markitup/sets/textile/set.js
+
+        extra_stylesheets:
+            # ...
+            - bundles/sonataformatter/markitup/skins/sonata/style.css
+            - bundles/sonataformatter/markitup/sets/markdown/style.css
+            - bundles/sonataformatter/markitup/sets/html/style.css
+            - bundles/sonataformatter/markitup/sets/textile/style.css
