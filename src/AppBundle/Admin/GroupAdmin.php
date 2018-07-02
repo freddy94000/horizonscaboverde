@@ -7,38 +7,8 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-use Sonata\UserBundle\Admin\Model\UserAdmin as SonataUserAdmin;
+use Sonata\UserBundle\Admin\Model\GroupAdmin as SonataGroupAdmin;
 
-class UserAdmin extends SonataUserAdmin
+class GroupAdmin extends SonataGroupAdmin
 {
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection
-            ->remove('export')
-            ->remove('show')
-        ;
-    }
-
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->add('code', null, ['label' => 'Code'])
-            ->add('title', null, ['label' => 'Titre'])
-            ->add('_action', null, [
-                'actions' => [
-                    'edit' => [],
-                    'delete' => [],
-                ],
-            ])
-        ;
-    }
-
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-        parent::configureFormFields($formMapper);
-
-        $formMapper
-            ->add('hcode', null, ['label' => 'Hcode'])
-        ;
-    }
 }

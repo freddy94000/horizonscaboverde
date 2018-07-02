@@ -2,16 +2,17 @@
 
 namespace AppBundle\Entity;
 
-use Sonata\UserBundle\Entity\BaseUser;
+
 use Doctrine\ORM\Mapping as ORM;
+use Sonata\UserBundle\Entity\BaseGroup;
 
 /**
  * User
  *
- * @ORM\Table(name="fos_user_user")
+ * @ORM\Table(name="fos_group")
  * @ORM\Entity
  */
-class User extends BaseUser
+class Group extends BaseGroup
 {
 
   /**
@@ -22,12 +23,5 @@ class User extends BaseUser
    * @ORM\GeneratedValue(strategy="AUTO")
    */
   protected $id;
-
-  /**
-   * @var string
-   *
-   * @ORM\Column(name="hcode", type="string", length=255)
-   */
-  protected $hcode;
 
 }

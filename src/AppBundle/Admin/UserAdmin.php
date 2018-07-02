@@ -2,59 +2,28 @@
 
 namespace AppBundle\Admin;
 
-use Sonata\AdminBundle\Admin\AbstractAdmin;
-use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Ivory\CKEditorBundle\Form\Type\CKEditorType;
-use Sonata\FormatterBundle\Form\Type\SimpleFormatterType;
 
-class BlockAdmin extends AbstractAdmin
+use Sonata\UserBundle\Admin\Model\UserAdmin as SonataUserAdmin;
+
+class UserAdmin extends SonataUserAdmin
 {
-    protected function configureRoutes(RouteCollection $collection)
+
+    protected function configureFormFields(FormMapper $formMapper) : void
     {
-        $collection
-            ->remove('export')
-            ->remove('show')
-        ;
-    }
-
-    protected function configureListFields(ListMapper $listMapper)
-    {
-        $listMapper
-            ->add('code', null, ['label' => 'Code'])
-            ->add('title', null, ['label' => 'Titre'])
-            ->add('_action', null, [
-                'actions' => [
-                    'edit' => [],
-                    'delete' => [],
-                ],
-            ])
-        ;
-    }
-
-    protected function configureFormFields(FormMapper $formMapper)
-    {
-        $subject = $this->getSubject();
-
-        $imageOptions = ['label' => 'Image', 'required' => false];
-
-        if ($subject->getImageName()) {
-            $imageOptions['help'] = '<img src="/images/' . $subject->getImageName() . '" style="max-height: 200px; max-width: 200px;" />';
-        }
+        parent::configureFormFields($formMapper);
 
         $formMapper
-            ->add('code', null, ['label' => 'Code'])
-            ->add('title', null, ['label' => 'Titre'])
-            ->add('content', 'textarea', [
-                'label' => 'Contenu',
-                'attr' => [
-                    'rows' => '10'
-                ],
-            ])
-            ->add('imageFile', 'Vich\UploaderBundle\Form\Type\VichFileType', $imageOptions)
+            ->add('hcode', null, ['label' => 'Hcode'])
+            ->add('address', null, ['label' => 'Adresse'])
+            ->add('codePostal', null, ['label' => 'Code Postal'])
+            ->add('city', null, ['label' => 'Ville'])
+            ->add('company', null, ['label' => 'Entreprise'])
+            ->add('activity', null, ['label' => 'Activité'])
+            ->add('proffession', null, ['label' => 'Proffession'])
         ;
     }
 }

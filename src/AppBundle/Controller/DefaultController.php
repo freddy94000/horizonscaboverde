@@ -3,11 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Repository\BlockRepository;
-use Application\Sonata\MediaBundle\PHPCR\MediaRepository;
 use Application\Sonata\UserBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sonata\MediaBundle\Entity\MediaManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -49,9 +49,23 @@ class DefaultController extends Controller
         $user->setPlainPassword('horizons');
 
         $form = $this->createFormBuilder($user)
+          ->add('gender', ChoiceType::class, [
+            'attr' => ['placeholder' => 'Civilité *', 'class' => 'form-control'],
+              'choices' => [
+                  'Monsieur' => 'm',
+                  'Madame' => 'f'
+              ]
+          ])
           ->add('email', TextType::class, ['attr' => ['placeholder' => 'Email *', 'class' => 'form-control']])
           ->add('firstname', TextType::class, ['attr' => ['placeholder' => 'Prénom *', 'class' => 'form-control']])
           ->add('lastname', TextType::class, ['attr' => ['placeholder' => 'Nom *', 'class' => 'form-control']])
+          ->add('address', TextType::class, ['attr' => ['placeholder' => 'Adresse', 'class' => 'form-control']])
+          ->add('codePostal', TextType::class, ['attr' => ['placeholder' => 'Code Postal', 'class' => 'form-control']])
+          ->add('city', TextType::class, ['attr' => ['placeholder' => 'Ville', 'class' => 'form-control']])
+          ->add('phone', TextType::class, ['attr' => ['placeholder' => 'Téléphone', 'class' => 'form-control']])
+          ->add('company', TextType::class, ['attr' => ['placeholder' => 'Entreprise', 'class' => 'form-control']])
+          ->add('activity', TextType::class, ['attr' => ['placeholder' => 'Activité', 'class' => 'form-control']])
+          ->add('proffession', TextType::class, ['attr' => ['placeholder' => 'Profession', 'class' => 'form-control']])
           ->getForm();
 
         $form->handleRequest($request);
@@ -59,6 +73,9 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             $user->setUsername($user->getEmail());
             $userManager->updateUser($user);
+            
+            $this->addFlash('success', 'Votre inscription a bien été envoyé');
+            return $this->redirectToRoute('homepage');
         }
 
 
