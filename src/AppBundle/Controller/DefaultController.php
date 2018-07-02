@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Email;
 use AppBundle\Repository\BlockRepository;
 use Application\Sonata\UserBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -70,7 +71,7 @@ class DefaultController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isValid() && $user->getFirstname()) {
             $user->setUsername($user->getEmail());
             $userManager->updateUser($user);
             
@@ -78,6 +79,20 @@ class DefaultController extends Controller
             return $this->redirectToRoute('homepage');
         }
 
+        $email = new Email();
+        $formNewsletter = $this->createFormBuilder($email)
+          ->add('email', TextType::class, ['attr' => ['class' => 'form-control']])
+          ->getForm();
+        
+        $formNewsletter->handleRequest($request);
+        if ($formNewsletter->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($email);
+            $em->flush();
+            
+            $this->addFlash('success', 'Votre inscription a bien été envoyé');
+            return $this->redirectToRoute('homepage');
+        }
 
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
@@ -89,7 +104,8 @@ class DefaultController extends Controller
             'sport' => $sport,
             'culture' => $culture,
             'medias' => $medias,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'formNewsletter' => $formNewsletter->createView()
         ]);
     }
 }

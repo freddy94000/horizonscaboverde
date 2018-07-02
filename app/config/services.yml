@@ -40,3 +40,21 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Block }
         public: true
+
+    app.admin.newsletter:
+        class: AppBundle\Admin\NewsletterAdmin
+        arguments: [~, AppBundle\Entity\Newsletter, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Newsletters, label: Newsletters }
+
+    app.admin.email:
+        class: AppBundle\Admin\EmailAdmin
+        arguments: [~, AppBundle\Entity\Email, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Newsletters, label: Mailing List }
+
+    app.event_listener.doctrine_listener:
+        class: AppBundle\EventListener\DoctrineListener
+        arguments: ['@mailer']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
