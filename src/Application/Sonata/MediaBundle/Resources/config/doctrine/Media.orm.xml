@@ -17,7 +17,5 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <field name="homePrincipal" column="homePrincipal" type="boolean" />
-
     </entity>
 </doctrine-mapping>

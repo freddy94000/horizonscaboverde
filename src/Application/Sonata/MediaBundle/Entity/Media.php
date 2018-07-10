@@ -20,11 +20,6 @@ class Media extends BaseMedia
     protected $id;
 
     /**
-     * @var boolean $homePrincipal
-     */
-    protected $homePrincipal;
-
-    /**
      * Get id.
      *
      * @return int $id
@@ -32,24 +27,5 @@ class Media extends BaseMedia
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getHomePrincipal()
-    {
-        return $this->homePrincipal;
-    }
-
-    /**
-     * @param $homePrincipal
-     * @return $this
-     */
-    public function setHomePrincipal($homePrincipal)
-    {
-        $this->homePrincipal = $homePrincipal;
-        
-        return $this;
     }
 }

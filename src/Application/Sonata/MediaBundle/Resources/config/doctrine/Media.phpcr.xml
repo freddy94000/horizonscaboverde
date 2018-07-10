@@ -20,7 +20,6 @@
         <id name="id">
             <generator strategy="REPOSITORY" />
         </id>
-        <field name="homePrincipal" column="homePrincipal" type="boolean" />
 
     </document>
 
