@@ -41,7 +41,11 @@ class DefaultController extends Controller
         
         /** @var MediaManager $mediaManager */
         $mediaManager = $this->get('sonata.media.manager.media');
-        $medias = $mediaManager->findBy([], ['id' => 'DESC']);
+        $environnmentVideo = $mediaManager->find(2);
+        $entrepriseVideo = $mediaManager->find(3);
+        $sportVideo = $mediaManager->find(4);
+        $cultureVideo = $mediaManager->find(5);
+        $principalVideo = $mediaManager->find(6);
 
         /** @var \FOS\UserBundle\Doctrine\UserManager $userManager */
         $userManager = $this->get('fos_user.user_manager');
@@ -103,7 +107,11 @@ class DefaultController extends Controller
             'environnement' => $environnment,
             'sport' => $sport,
             'culture' => $culture,
-            'medias' => $medias,
+            'environnmentVideo' => $environnmentVideo,
+            'entrepriseVideo' => $entrepriseVideo,
+            'sportVideo' => $sportVideo,
+            'cultureVideo' => $cultureVideo,
+            'principalVideo' => $principalVideo,
             'form' => $form->createView(),
             'formNewsletter' => $formNewsletter->createView()
         ]);

@@ -37,6 +37,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-6">
+                    {% media environnmentVideo, 'big' %}
                 </div>
                 <div class="col-xs-12 col-md-6">
                     <h2>{{ environnement.title }}</h2>
@@ -54,6 +55,7 @@
                     <p>{{ entreprise.content|raw }}</p>
                 </div>
                 <div class="col-xs-12 col-md-6">
+                    {% media entrepriseVideo, 'big' %}
                 </div>
             </div>
         </div>
@@ -62,25 +64,9 @@
     <div class="medias">
         <div class="container">
             <div class="row">
-                {#{% for media in medias %}
-                    {% if loop.index < 6 %}
-                        {% if loop.first %}
-                            <div class="col-xs-6">
-                                {% media media, 'big' %}
-                            </div>
-                            <div class="col-xs-6">
-                            <div class="row">
-                        {% else %}
-                            <div class="col-xs-6">
-                                {% thumbnail media, 'big' %}
-                            </div>
-                        {% endif %}
-                        {% if loop.last %}
-                            </div>
-                            </div>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}#}
+                <div class="col-xs-12 col-md-12">
+                    {% media principalVideo, 'bigger' %}
+                </div>
             </div>
         </div>
     </div>
@@ -93,7 +79,7 @@
                     <p>{{ sport.content|raw }}</p>
                 </div>
                 <div class="col-xs-12 col-md-6">
-
+                    {% media sportVideo, 'big' %}
                 </div>
             </div>
         </div>
@@ -103,6 +89,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-6">
+                    {% media cultureVideo, 'big' %}
                 </div>
                 <div class="col-xs-12 col-md-6">
                     <h2>{{ culture.title }}</h2>

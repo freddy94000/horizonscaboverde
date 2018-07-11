@@ -2,8 +2,11 @@
 
 namespace AppBundle\EventListener;
 
+use AppBundle\Entity\Group;
+use AppBundle\Entity\User;
 use \Doctrine\ORM\Event\LifecycleEventArgs;
 use \AppBundle\Entity\Newsletter;
+use Doctrine\ORM\Event\OnFlushEventArgs;
 
 class DoctrineListener
 {
@@ -33,11 +36,63 @@ class DoctrineListener
     foreach ($emails as $to) {
       $message = \Swift_Message::newInstance()
         ->setSubject($entity->getSubject())
-        ->setFrom('contact@horizonscaboverde.com ')
+        ->setFrom('contact@horizonscaboverde.com')
         ->setTo($to->getEmail())
         ->setBody($entity->getContent(), 'text/html');
       $this->mailer->send($message);
     }
+  }
+
+  public function onFlush(OnFlushEventArgs $args)
+  {
+    $em = $args->getEntityManager();
+    $uow = $em->getUnitOfWork();
+
+    $entities = array_merge(
+      $uow->getScheduledEntityInsertions(),
+      $uow->getScheduledEntityUpdates()
+    );
+
+    foreach ($entities as $entity) {
+      if ($entity instanceof User) {
+        $group = $entity->getGroups()->first();
+
+        if ($group instanceof Group) {
+
+          $groupName = $group->getName();
+          $groupNumber = 0;
+
+          switch ($groupName) {
+            case 'Niveau 1':
+              $groupNumber = '1';
+              break;
+            case 'Niveau 2':
+              $groupNumber = '2';
+              break;
+            case 'Niveau 3':
+              $groupNumber = '3';
+              break;
+            case 'Niveau 4':
+              $groupNumber = '4';
+              break;
+            case 'Fondateur':
+              $groupNumber = '9';
+              break;
+          }
+
+          $group->addCount();
+          $numeroCarte = $group->getCount();
+
+          $hcode = '3101 2004 ' . date('dm') . ' ' . $groupNumber . sprintf('%04d', $numeroCarte);
+          $entity->setHcode($hcode);
+
+          $em->persist($group);
+          $md = $em->getClassMetadata('AppBundle\Entity\Group');
+          $uow->recomputeSingleEntityChangeSet($md, $group);
+        }
+      }
+    }
+
   }
 
 }
