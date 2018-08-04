@@ -6,6 +6,22 @@ header {
   background-color: #311e02;
 }
 
+.newsletter {
+  background-color: #cf723e;
+  padding: 10px 0;
+
+  .form-control {
+    width: 300px;
+    margin: 0 10px;
+  }
+
+  .btn-newlestter {
+    background-color: #FBB321;
+    border-color: #FBB321;
+    color: black;
+  }
+}
+
 .principal {
   background-color: #FBB321;
   color: black;

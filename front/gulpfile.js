@@ -17,6 +17,4 @@ gulp.task('fonts', function(){
     .pipe(gulp.dest('../web/fonts'))
 });
 
-
-
 gulp.task('default', ['styles', 'js', 'fonts']);

@@ -5819,6 +5819,17 @@ header {
   height: 500px;
   background-color: #311e02; }
 
+.newsletter {
+  background-color: #cf723e;
+  padding: 10px 0; }
+  .newsletter .form-control {
+    width: 300px;
+    margin: 0 10px; }
+  .newsletter .btn-newlestter {
+    background-color: #FBB321;
+    border-color: #FBB321;
+    color: black; }
+
 .principal {
   background-color: #FBB321;
   color: black;
