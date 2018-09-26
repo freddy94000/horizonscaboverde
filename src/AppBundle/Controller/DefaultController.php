@@ -22,6 +22,55 @@ class DefaultController extends Controller
     {
         return $this->render('default/test.html.twig', []);
     }
+
+    /**
+     * @Route("/test2", name="test2")
+     */
+    public function index2Action(Request $request)
+    {
+        /** @var BlockRepository $blockRepository */
+        $blockRepository = $this->getDoctrine()->getRepository('AppBundle:Block');
+        $principal1 = $blockRepository->findOneBy(['code' => 'principal_1']);
+        $principal2 = $blockRepository->findOneBy(['code' => 'principal_2']);
+        $principal3 = $blockRepository->findOneBy(['code' => 'principal_3']);
+        $entreprise = $blockRepository->findOneBy(['code' => 'entreprise']);
+        $environnment = $blockRepository->findOneBy(['code' => 'environnement']);
+        $sport = $blockRepository->findOneBy(['code' => 'sport']);
+        $culture = $blockRepository->findOneBy(['code' => 'culture']);
+        $adhesion = $blockRepository->findOneBy(['code' => 'adhesion']);
+
+        /** @var MediaManager $mediaManager */
+        $mediaManager = $this->get('sonata.media.manager.media');
+        $principalVideo = $mediaManager->find(3);
+        
+        $email = new Email();
+        $formNewsletter = $this->createFormBuilder($email)
+          ->add('email', TextType::class, ['attr' => ['class' => 'form-control']])
+          ->getForm();
+
+        $formNewsletter->handleRequest($request);
+        if ($formNewsletter->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($email);
+            $em->flush();
+
+            $this->addFlash('success', 'Votre inscription a bien été envoyé');
+            return $this->redirectToRoute('homepage');
+        }
+        
+        return $this->render('default/test2.html.twig', [
+            'principal1' => $principal1,
+            'principal2' => $principal2,
+            'principal3' => $principal3,
+            'entreprise' => $entreprise,
+            'environnment' => $environnment,
+            'sport' => $sport,
+            'culture' => $culture,
+            'adhesion' => $adhesion,
+            'principalVideo' => $principalVideo,
+            'formNewsletter' => $formNewsletter->createView()
+        ]);
+    }
     
     /**
      * @Route("/test", name="homepage")
@@ -116,4 +165,6 @@ class DefaultController extends Controller
             'formNewsletter' => $formNewsletter->createView()
         ]);
     }
+    
+    
 }

@@ -17,91 +17,100 @@
                         <button class="btn btn-primary btn-newlestter" type="submit" id="mailSubmit">OK</button>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="principal">
-        <div class="container">
-            <div class="row">
                 <div class="col-xs-12 col-md-6">
-                    <p class="principal1">{{ principal1.content|raw }}</p>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <p class="principal2">{{ principal2.content|raw }}</p>
-                    <p class="principal3">{{ principal3.content|raw }}</p>
+                    <div class="social-link">
+                        <a href=""><i class="fab fa-google-plus-g"></i></a>
+                        <a href="https://www.facebook.com/Horizonscaboverde"><i class="fab fa-facebook"></i></a>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fab fa-vimeo-v"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="environnement gray block">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
-                    {% media environnmentVideo, 'big' %}
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <h2>{{ environnement.title }}</h2>
-                    <p>{{ environnement.content|raw }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="entreprise white block">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
-                    <h2>{{ entreprise.title }}</h2>
-                    <p>{{ entreprise.content|raw }}</p>
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    {% media entrepriseVideo, 'big' %}
+        <div class="principal">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <p class="principal1">{{ principal1.content|raw }}</p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <p class="principal2">{{ principal2.content|raw }}</p>
+                        <p class="principal3">{{ principal3.content|raw }}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="medias">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-12">
-                    {% media principalVideo, 'bigger' %}
+        <div class="environnement gray block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 video-container">
+                        {% media environnmentVideo, 'big' %}
+                    </div>
+                    <div class="col-xs-12 col-md-6 text-container">
+                        <h2>{{ environnement.title }}</h2>
+                        <p>{{ environnement.content|raw }}</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="sport white block">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
-                    <h2>{{ sport.title }}</h2>
-                    <p>{{ sport.content|raw }}</p>
+        <div class="entreprise white block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 text-container">
+                        <h2>{{ entreprise.title }}</h2>
+                        <p>{{ entreprise.content|raw }}</p>
+                    </div>
+                    <div class="col-xs-12 col-md-6 video-container">
+                        {% media entrepriseVideo, 'big' %}
+                    </div>
                 </div>
-                <div class="col-xs-12 col-md-6">
-                    {% media sportVideo, 'big' %}
+            </div>cd
+        </div>
+
+        <div class="medias">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 video-container-principal">
+                        {% media principalVideo, 'bigger' %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="culture gray block">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
-                    {% media cultureVideo, 'big' %}
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <h2>{{ culture.title }}</h2>
-                    <p>{{ culture.content|raw }}</p>
+        <div class="sport white block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 text-container">
+                        <h2>{{ sport.title }}</h2>
+                        <p>{{ sport.content|raw }}</p>
+                    </div>
+                    <div class="col-xs-12 col-md-6 video-container">
+                        {% media sportVideo, 'big' %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="inscription">
+        <div class="culture gray block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 video-container">
+                        {% media cultureVideo, 'big' %}
+                    </div>
+                    <div class="col-xs-12 col-md-6 text-container">
+                        <h2>{{ culture.title }}</h2>
+                        <p>{{ culture.content|raw }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!--<div class="inscription">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-md-12">
@@ -171,6 +180,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
 {% endblock %}

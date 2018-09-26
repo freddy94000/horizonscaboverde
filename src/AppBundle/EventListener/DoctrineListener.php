@@ -83,7 +83,9 @@ class DoctrineListener
           $group->addCount();
           $numeroCarte = $group->getCount();
 
-          $hcode = '3101 2004 ' . date('dm') . ' ' . $groupNumber . sprintf('%04d', $numeroCarte);
+          $hcode = '31012004' . $groupNumber . sprintf('%07d', $numeroCarte);
+          $hcode = implode(' ', str_split($hcode, 4));
+
           $entity->setHcode($hcode);
 
           $em->persist($group);

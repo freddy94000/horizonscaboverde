@@ -18,6 +18,8 @@ class BlockAdmin extends AbstractAdmin
         $collection
             ->remove('export')
             ->remove('show')
+            ->remove('delete')
+            ->remove('create')
         ;
     }
 
@@ -46,7 +48,6 @@ class BlockAdmin extends AbstractAdmin
         }
 
         $formMapper
-            ->add('code', null, ['label' => 'Code'])
             ->add('title', null, ['label' => 'Titre'])
             ->add('content', 'textarea', [
                 'label' => 'Contenu',

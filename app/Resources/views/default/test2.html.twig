@@ -1,0 +1,134 @@
+{% extends 'base2.html.twig' %}
+
+{% block body %}
+    <div class="menu_orange">
+        <ul>
+            <li><a href="" class="first">D238</a></li>
+            <li><a href="">ACTU</a></li>
+            <li><a href="">ENTREPRISE</a></li>
+            <li><a href="">SPORT</a></li>
+            <li><a href="">ECOLOGIE</a></li>
+            <li><a href="">ART</a></li>
+            <li><a href="">ADHESION</a></li>
+        </ul>
+    </div>
+
+
+    <div class="header_photo">
+        <h1>{{ principal1.title|raw }}</h1>
+    </div>
+
+
+    <div class="bandeau_newsletter">
+        <div class="container_newsletter">
+            <div class="form_newsletter">
+                <form method="post" action="{{ path('homepage') }}" class="form-inline">
+                    {{form_errors(formNewsletter)}}
+
+                    <div class="form-group">
+                        <label>NEWSLETTER</label>
+                        {{ form_widget(formNewsletter.email, {'attr': {'class': 'form-control', 'placeholder': 'Entrez votre email'}}) }}
+                    </div>
+
+                    {{ form_widget(formNewsletter._token) }}
+                    <button class="btn btn-primary btn-newlestter" type="submit" id="mailSubmit">GO</button>
+                </form>
+            </div>
+            <div class="social_link">
+                <a href="">TWITTER</a>
+                <a href="https://www.facebook.com/Horizonscaboverde">FACEBOOK</a>
+                <a href="">INSTAGRAM</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="block_principal">
+        <div class="container_principal">
+            <div class="principal_left">
+                <p class="principal1">{{ principal1.content|raw }}</p>
+            </div>
+            <div class="principal_right">
+                <p class="principal2">{{ principal2.content|raw }}</p>
+                <p class="principal3">{{ principal3.content|raw }}</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="block_video">
+        <div class="container_video">
+            {% media principalVideo, 'bigger' %}
+        </div>
+    </div>
+
+
+    <div class="block_content block_entreprise">
+        <div class="container_content">
+            <div class="content_picture"><img src="{{ asset('images/entreprise.jpg') }}"></div>
+            <div class="text_picture">
+                <h2>{{ entreprise.title }}</h2>
+                <p>{{ entreprise.content|raw }}</p>
+                <a href="">+ Entreprise</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="block_content block_environnment">
+        <div class="container_content">
+            <div class="content_picture"><img src="{{ asset('images/ecology.jpg') }}"></div>
+            <div class="text_picture">
+                <h2>{{ environnment.title }}</h2>
+                <p>{{ environnment.content|raw }}</p>
+                <a href="">+ Ecologie</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="block_content block_sport">
+        <div class="container_content">
+            <div class="content_picture"><img src="{{ asset('images/sport.jpg') }}"></div>
+            <div class="text_picture">
+                <h2>{{ sport.title }}</h2>
+                <p>{{ sport.content|raw }}</p>
+                <a href="">+ Sport</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="block_content block_art">
+        <div class="container_content">
+            <div class="content_picture"><img src="{{ asset('images/art.jpg') }}"></div>
+            <div class="text_picture">
+                <h2>{{ culture.title }}</h2>
+                <p>{{ culture.content|raw }}</p>
+                <a href="">+ Art</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="block_content block_adhesion">
+        <div class="container_content">
+            <div class="content_picture"><img src="{{ asset('images/adhe.jpg') }}"></div>
+            <div class="text_picture">
+                <h2>{{ adhesion.title }}</h2>
+                <p>{{ adhesion.content|raw }}</p>
+                <a href="">+ Adhésion</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="menu_noir">
+        <ul>
+            <li><a href="" class="first">D238</a></li>
+            <li><a href="">ACTU</a></li>
+            <li><a href="">ENTREPRISE</a></li>
+            <li><a href="">SPORT</a></li>
+            <li><a href="">ECOLOGIE</a></li>
+            <li><a href="">ART</a></li>
+            <li><a href="">ADHESION</a></li>
+        </ul>
+    </div>
+
+{% endblock %}

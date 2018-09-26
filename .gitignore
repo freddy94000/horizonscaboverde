@@ -19,3 +19,4 @@ composer.phar
 /front/bower_components/
 /front/node_modules/
 /front/package-lock.json
+.DS_Store
